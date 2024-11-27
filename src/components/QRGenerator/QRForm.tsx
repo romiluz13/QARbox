@@ -4,29 +4,29 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 
 interface QRFormProps {
-  businessName: string;
+  qrTitle: string;
   registrationUrl: string;
   qrColor: string;
-  onBusinessNameChange: (value: string) => void;
+  onQrTitleChange: (value: string) => void;
   onRegistrationUrlChange: (value: string) => void;
   onQrColorChange: (value: string) => void;
 }
 
 export const QRForm: React.FC<QRFormProps> = ({
-  businessName,
+  qrTitle,
   registrationUrl,
   qrColor,
-  onBusinessNameChange,
+  onQrTitleChange,
   onRegistrationUrlChange,
   onQrColorChange,
 }) => (
   <div className="space-y-6">
     <div className="space-y-2">
-      <Label htmlFor="businessName" className="text-lg font-semibold">כותרת לברקוד</Label>
+      <Label htmlFor="qrTitle" className="text-lg font-semibold">כותרת לברקוד</Label>
       <Input
-        id="businessName"
-        value={businessName}
-        onChange={(e) => onBusinessNameChange(e.target.value)}
+        id="qrTitle"
+        value={qrTitle}
+        onChange={(e) => onQrTitleChange(e.target.value)}
         placeholder="הכנס כותרת לברקוד"
         className="text-right text-lg"
       />

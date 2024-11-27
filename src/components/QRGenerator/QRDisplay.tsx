@@ -5,14 +5,14 @@ import { QRDownloader } from './QRDownloader';
 
 interface QRDisplayProps {
   registrationUrl: string;
-  businessName: string;
+  qrTitle: string;
   qrColor: string;
   onDownload: () => void;
 }
 
 export const QRDisplay: React.FC<QRDisplayProps> = ({
   registrationUrl,
-  businessName,
+  qrTitle,
   qrColor,
   onDownload,
 }) => {
@@ -38,10 +38,10 @@ export const QRDisplay: React.FC<QRDisplayProps> = ({
         />
       </div>
       <div className="text-center mt-4">
-        <p className="font-bold text-2xl text-gray-800">{businessName || 'Arbox QR'}</p>
+        <p className="font-bold text-2xl text-gray-800">{qrTitle || 'ברקוד Arbox'}</p>
         <p className="text-sm text-gray-500 mt-1">סרוק להרשמה</p>
       </div>
-      <QRDownloader businessName={businessName} onDownload={onDownload} />
+      <QRDownloader businessName={qrTitle} onDownload={onDownload} />
     </>
   );
 };

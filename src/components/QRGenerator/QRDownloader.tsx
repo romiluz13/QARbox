@@ -3,11 +3,11 @@ import { Download } from 'lucide-react';
 import { Button } from '../ui/button';
 
 interface QRDownloaderProps {
-  businessName: string;
+  qrTitle: string;
   onDownload: () => void;
 }
 
-export const QRDownloader: React.FC<QRDownloaderProps> = ({ businessName, onDownload }) => (
+export const QRDownloader: React.FC<QRDownloaderProps> = ({ qrTitle, onDownload }) => (
   <Button
     onClick={onDownload}
     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg py-6"

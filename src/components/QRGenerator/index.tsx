@@ -9,11 +9,11 @@ interface QRGeneratorProps {
 }
 
 export const QRGenerator: React.FC<QRGeneratorProps> = ({ defaultUrl = '' }) => {
-  const [businessName, setBusinessName] = useState('');
+  const [qrTitle, setQrTitle] = useState('');
   const [registrationUrl, setRegistrationUrl] = useState(defaultUrl);
   const [qrColor, setQrColor] = useState('#000000');
 
-  const handleDownload = useQRDownload(businessName);
+  const handleDownload = useQRDownload(qrTitle);
 
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto p-6 space-y-8" dir="rtl">
@@ -34,10 +34,10 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ defaultUrl = '' }) => 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
           <QRForm
-            businessName={businessName}
+            businessName={qrTitle}
             registrationUrl={registrationUrl}
             qrColor={qrColor}
-            onBusinessNameChange={setBusinessName}
+            onBusinessNameChange={setQrTitle}
             onRegistrationUrlChange={setRegistrationUrl}
             onQrColorChange={setQrColor}
           />
@@ -46,7 +46,7 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ defaultUrl = '' }) => 
         <div className="flex flex-col items-center justify-center space-y-6 bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
           <QRDisplay
             registrationUrl={registrationUrl}
-            businessName={businessName}
+            businessName={qrTitle}
             qrColor={qrColor}
             onDownload={handleDownload}
           />
