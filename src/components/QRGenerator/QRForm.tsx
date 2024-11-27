@@ -22,12 +22,12 @@ export const QRForm: React.FC<QRFormProps> = ({
 }) => (
   <div className="space-y-6">
     <div className="space-y-2">
-      <Label htmlFor="businessName" className="text-lg font-semibold">שם העסק</Label>
+      <Label htmlFor="businessName" className="text-lg font-semibold">כותרת לברקוד</Label>
       <Input
         id="businessName"
         value={businessName}
         onChange={(e) => onBusinessNameChange(e.target.value)}
-        placeholder="הכנס את שם העסק שלך"
+        placeholder="הכנס כותרת לברקוד"
         className="text-right text-lg"
       />
     </div>
