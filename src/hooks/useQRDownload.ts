@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-export const useQRDownload = (qrTitle: string) => {
+export const useQRDownload = (businessName: string): (() => void) => {
   return useCallback(() => {
     const svg = document.getElementById('qr-code');
     if (!svg) return;
@@ -17,11 +17,11 @@ export const useQRDownload = (qrTitle: string) => {
       const pngFile = canvas.toDataURL('image/png');
       
       const downloadLink = document.createElement('a');
-      downloadLink.download = `${qrTitle || 'arbox-qr'}.png`;
+      downloadLink.download = `${businessName || 'arbox-qr'}.png`;
       downloadLink.href = pngFile;
       downloadLink.click();
     };
     
     img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
-  }, [qrTitle]);
+  }, [businessName]);
 };

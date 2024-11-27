@@ -4,29 +4,29 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 
 interface QRFormProps {
-  qrTitle: string;
+  businessName: string;
   registrationUrl: string;
   qrColor: string;
-  onQrTitleChange: (value: string) => void;
-  onRegistrationUrlChange: (value: string) => void;
-  onQrColorChange: (value: string) => void;
+  onBusinessNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onRegistrationUrlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onQrColorChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const QRForm: React.FC<QRFormProps> = ({
-  qrTitle,
+  businessName,
   registrationUrl,
   qrColor,
-  onQrTitleChange,
+  onBusinessNameChange,
   onRegistrationUrlChange,
   onQrColorChange,
 }) => (
   <div className="space-y-6">
     <div className="space-y-2">
-      <Label htmlFor="qrTitle" className="text-lg font-semibold">כותרת לברקוד</Label>
+      <Label htmlFor="businessName" className="text-lg font-semibold">כותרת לברקוד</Label>
       <Input
-        id="qrTitle"
-        value={qrTitle}
-        onChange={(e) => onQrTitleChange(e.target.value)}
+        id="businessName"
+        value={businessName}
+        onChange={onBusinessNameChange}
         placeholder="הכנס כותרת לברקוד"
         className="text-right text-lg"
       />
@@ -39,7 +39,7 @@ export const QRForm: React.FC<QRFormProps> = ({
           id="registrationUrl"
           type="url"
           value={registrationUrl}
-          onChange={(e) => onRegistrationUrlChange(e.target.value)}
+          onChange={onRegistrationUrlChange}
           placeholder="הדבק את קישור ההרשמה מ-Arbox"
           className="text-right text-lg pl-10"
         />
@@ -54,7 +54,7 @@ export const QRForm: React.FC<QRFormProps> = ({
           id="qrColor"
           type="color"
           value={qrColor}
-          onChange={(e) => onQrColorChange(e.target.value)}
+          onChange={onQrColorChange}
           className="h-10 w-20 rounded cursor-pointer"
         />
         <span className="text-sm text-gray-500">בחר צבע מותאם אישית</span>

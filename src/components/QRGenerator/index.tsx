@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, type ChangeEvent } from 'react';
 import { Sparkles, Dumbbell } from 'lucide-react';
 import { QRForm } from './QRForm';
 import { QRDisplay } from './QRDisplay';
@@ -9,11 +9,15 @@ interface QRGeneratorProps {
 }
 
 export const QRGenerator: React.FC<QRGeneratorProps> = ({ defaultUrl = '' }) => {
-  const [qrTitle, setQrTitle] = useState('');
+  const [businessName, setBusinessName] = useState('');
   const [registrationUrl, setRegistrationUrl] = useState(defaultUrl);
   const [qrColor, setQrColor] = useState('#000000');
 
-  const handleDownload = useQRDownload(qrTitle);
+  const handleDownload = useQRDownload(businessName);
+
+  const handleBusinessNameChange = (e: ChangeEvent<HTMLInputElement>) => setBusinessName(e.target.value);
+  const handleRegistrationUrlChange = (e: ChangeEvent<HTMLInputElement>) => setRegistrationUrl(e.target.value);
+  const handleQrColorChange = (e: ChangeEvent<HTMLInputElement>) => setQrColor(e.target.value);
 
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto p-6 space-y-8" dir="rtl">
@@ -34,19 +38,19 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ defaultUrl = '' }) => 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
           <QRForm
-            businessName={qrTitle}
+            businessName={businessName}
             registrationUrl={registrationUrl}
             qrColor={qrColor}
-            onBusinessNameChange={setQrTitle}
-            onRegistrationUrlChange={setRegistrationUrl}
-            onQrColorChange={setQrColor}
+            onBusinessNameChange={handleBusinessNameChange}
+            onRegistrationUrlChange={handleRegistrationUrlChange}
+            onQrColorChange={handleQrColorChange}
           />
         </div>
 
         <div className="flex flex-col items-center justify-center space-y-6 bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
           <QRDisplay
             registrationUrl={registrationUrl}
-            businessName={qrTitle}
+            businessName={businessName}
             qrColor={qrColor}
             onDownload={handleDownload}
           />
